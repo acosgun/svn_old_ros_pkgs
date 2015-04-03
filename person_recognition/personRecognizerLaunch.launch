@@ -1,0 +1,54 @@
+<launch>
+  
+  <node name="prosilica_driver" pkg="prosilica_camera" type="prosilica_node" output="screen" >
+    <param name="ip_address" type="str" value="192.168.1.20"/>
+    <remap from="camera" to="prosilica" />
+    <param name="trigger_mode" type="str" value="streaming"/>
+    <rosparam command="load" file="$(find prosilica_camera)/cam_settings.yaml" />
+  </node>
+
+  <node ns="prosilica" pkg="image_proc" type="image_proc" respawn="false" name="prosilica_image_proc">
+    <remap from="image_raw" to="/prosilica/image_raw"/>
+    <remap from="camera_info" to="/prosilica/camera_info"/>
+  </node>
+
+  <node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/>  
+
+  <node name="ptu_46" pkg="ptu_46" type="ptu-46-70" respawn="false" output="screen">
+     <param name="nodding_mode" type="bool" value="false" />
+	   <param name="nodding_up_angle" type="double" value="30.0" />
+	   <param name="nodding_down_angle" type="double" value="-45.0" />
+     <!--<param name="ptu_device_path" type="string" value="/dev/ttyS0" />-->
+	   <param name="ptu_device_path" type="string" value="/dev/ptu" />
+	   <param name="publish_pointcloud" type="bool" value="true" />
+  </node>
+
+  <node pkg="person_recognition" type="PersonRecognizerImplementationRobocup" name="PersonRecognizerRobocup" output="screen" >
+    <param name="cascadeFile" value="/home/mobmanip/ros/stacks/vision_opencv/opencv2/build/opencv-svn/data/haarcascades/haarcascade_frontalface_default.xml"/>
+    <!--<param name="packageDir" value="/home/mobmanip/CogROS/trunk/person_recognition" />-->
+    <param name="packageDir" value="$(find person_recognition)" />
+    <param name="recognitionThreshold" value="0.66" />
+    <param name="searchedPersonsName" value="SEARCH_EVERYBODY" />  
+    <param name="trainHowManyImages" value="20" />
+    <param name="scoringBiasTowardsFaceRecog" value="0.45" />
+    <param name="learningRate" value="0.0" />
+    <param name="THRESHOLD_FOR_RATIO_TEST" value="1.00" />
+    <param name="maxNumberOfFaceTrainImages" value="40" />
+    <param name="isNameNeeded" value="true" />
+    <param name="learnedPersonsName" value="NOT_SET" />
+    <param name="showImages" value="true" />
+    <param name="verbose" value="false" />
+    <param name="currentState" value="2" />
+    <param name="faceDetectionQualityWhenRecognition" value="4" />
+    <param name="faceDetectionQualityWhenLearning" value="5" />
+    <param name="adaptiveShirtHist" value="false" />
+    <param name="usePTU" value="true" />
+  </node>
+
+
+ <node pkg="person_recognition" type="command_generator" name="command_generator" output="screen" >
+ </node>
+
+
+
+</launch>

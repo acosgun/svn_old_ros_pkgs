@@ -1,0 +1,30 @@
+//SYS
+#include <stdio.h>
+
+//ROS
+#include <ros/ros.h>
+#include <sensor_msgs/LaserScan.h>
+#include <sensor_msgs/PointCloud2.h>
+
+class Segment
+{
+public:
+  std::vector<pcl::PointXYZ> points;
+  pcl::PointXYZ mid_point;
+  double width;
+};
+
+class Blob
+{
+public:
+  Segment segment;
+  geometry_msgs::Vector3 velocity;
+  void setPoseStamped(geometry_msgs::PoseStamped pose);
+  geometry_msgs::PoseStamped getPoseStamped();
+  geometry_msgs::PoseStamped prev_pose_msg; 
+  Blob();
+protected:
+  void calculateVelocity();
+  geometry_msgs::PoseStamped pose_msg;
+  double filtering_factor;
+};

@@ -1,0 +1,10 @@
+bool recognitionThresholdChange
+bool searchedPersonsNameChange
+bool currentStateChange
+bool isNameNeededChange
+bool learnedPersonsNameChange
+float64 recognitionThreshold
+string searchedPersonsName
+int32 currentState
+bool isNameNeeded
+string learnedPersonsName

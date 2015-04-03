@@ -1,0 +1,29 @@
+<launch>
+  
+  image_broadcaster
+  
+  <node pkg="image_broadcaster" type="image_broadcaster" name="image_broadcaster" output="screen">
+  </node>
+  
+  <node pkg="person_recognition" type="command_generator" name="command_generator" output="screen">
+  </node>
+  
+  <node pkg="person_recognition" type="PersonRecognizerImplementation" name="person_recognition" output="screen">
+    <param name="cascadeFile" value="/home/akan/Research/OpenCV-2.0.0/data/haarcascades/haarcascade_frontalface_alt.xml" />
+    <param name="packageDir" value="$(find person_recognition)" />
+    <param name="recognitionThreshold" value="0.65" />
+	<param name="searchedPersonsName" value="SEARCH_EVERYBODY" /> <!--"SEARCH_EVERYBODY"=searches known&unknown ppl.For unknown, name is tagged "UNKNOWN" 2."SEARCH_ONLY_KNOWN"=searches only known ppl. 3. "someName"=only searches the person called "someName"-->    
+    <param name="trainHowManyImages" value="20" />
+    <param name="scoringBiasTowardsFaceRecog" value="0.45" />
+    <param name="learningRate" value="0.0" />
+    <param name="THRESHOLD_FOR_RATIO_TEST" value="1.05" />
+    <param name="maxNumberOfFaceTrainImages" value="75" />
+    <param name="isNameNeeded" value="true" />
+    <param name="learnedPersonsName" value="NOT_SET" />
+    <param name="showImages" value="true" />
+    <param name="verbose" value="false" />
+    <param name="currentState" value="2" />
+    <param name="faceDetectionQualityWhenRecognition" value="3" />
+    <param name="faceDetectionQualityWhenLearning" value="4" />
+  </node>
+</launch>

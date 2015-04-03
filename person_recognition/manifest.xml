@@ -1,0 +1,34 @@
+<package>
+  <description brief="person_recognition">
+
+     person_recognition
+
+  </description>
+  <author>Akansel Cosgun</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/person_recognition</url>
+  <depend package="roscpp"/>
+  <depend package="sensor_msgs"/>
+  <depend package="cv_bridge"/>
+  <depend package="opencv2"/>
+  <depend package="geometry_msgs"/>
+  <depend package="std_msgs"/>
+  <depend package="home_obj_recognizer"/>
+  <depend package="actionlib"/>
+  <depend package="actionlib_msgs"/>
+  <depend package="sound_play"/>
+  <depend package="move_base_msgs"/>
+  <depend package="jeeves_actions"/>
+  <export>
+    <!--
+	<cpp cflags="-I${prefix}/include -I${prefix}/msg/cpp -I${prefix}/src"/>
+      -->
+ 	<cpp cflags="-I${prefix}/include -I${prefix}/msg/cpp `rosboost-cfg --cflags`" lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib `rosboost-cfg --lflags thread`"/>
+ 	
+  </export>
+
+  
+</package>
+
+

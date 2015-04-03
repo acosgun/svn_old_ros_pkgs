@@ -1,0 +1,21 @@
+<launch>
+
+  	<param name="sicklms/port" value="/dev/ttyS0" />
+	<param name="sicklms/baud" value="38400" />
+	<param name="sicklms/inverted" value="false" />
+  <node pkg="sicktoolbox_wrapper" type="sicklms" name="sicklms" output="screen">
+  </node>
+
+  <node pkg="pplbot_player" type="pplbot_player" name="pplbot" output="screen">
+  </node>
+
+  <node pkg="pplbot_setup_tf" type="tf_broadcaster" name="pplbot_tf" output="screen">
+  </node>
+
+  <node pkg="teleop_base" type="teleop_base_keyboard" output="screen" >
+  </node>
+
+
+
+
+</launch>

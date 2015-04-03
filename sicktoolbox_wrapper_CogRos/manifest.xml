@@ -1,0 +1,13 @@
+<package>
+  <description brief="ROS wrappers for using the SICK Toolbox">
+    <tt>sicktoolbox_wrapper_CogRos</tt> is a ROS wrapper for the outstanding <a href="http://www.ros.org/wiki/sicktoolbox">sicktoolbox</a>
+    library for interfacing with the SICK LMS2xx lasers.
+  </description>
+  <author>Morgan Quigley</author>
+  <url>http://ros.org/wiki/sicktoolbox_wrapper_CogRos</url>
+  <license>BSD</license>
+  <review status="Doc reviewed" notes="Dec 2009"/>
+  <depend package="sicktoolbox"/>
+  <depend package="roscpp"/>
+  <depend package="sensor_msgs"/>
+</package>

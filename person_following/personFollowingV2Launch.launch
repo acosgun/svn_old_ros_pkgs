@@ -1,0 +1,40 @@
+<launch>
+
+<!--<master auto="start"/>-->
+
+  <include  file="$(find people_following_demo)/move_base/move_base.xml"/>
+  <!--<include  file="$(find jeeves_config)/move_base/move_base.xml"/>-->
+  
+
+  <node pkg="command_generator" type="command_generator" name="command_generator" output="screen" >
+  </node>
+
+  <node pkg="person_following" type="PersonFollowerImplementationV2" name="PersonFollowerV2" output="screen" >
+    <param name="usePTU" value="false" />
+    <param name="useOdometry" value="true" />
+    <param name="useOdomForSpeed" value="true" />
+    <param name="useMoveBase" value="true" />
+    <param name="useVision" value="false" />
+    <param name="extraVelocityBeCareful" value="0.02" />
+    <param name="permanentInhibitNavigationMovement" value="false" />
+    <param name="distanceToKeepWithPerson" value="0.75" />
+    <param name="inverted" value="false" />
+    <param name="intDataPoints" value="181" />
+    <param name="angularResolution" value="1.0" />
+    <param name="rectangularBoxXover2sizeForMovDetection" value="0.6" />
+    <param name="rectangularBoxYsizeForMovDetection" value="2" />
+    <param name="operatingFrequency" value="9.37" />
+    <param name="checkpoint3detectionRadius" value="2.35" />
+    <param name="plotLaser" value="true" />
+    <param name="useVoice" value="true" />
+    <param name="useSpeechRec" value="false" />
+    <param name="logLaser" value="false" />
+    <param name="featureUpdateWindowSize" value="18" />
+    <param name="offlineTest" value="true" />
+    
+  </node>
+
+
+
+	
+</launch>

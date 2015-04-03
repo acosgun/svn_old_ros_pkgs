@@ -1,0 +1,41 @@
+<launch>
+
+<master auto="start"/>
+  <!--<machine name="mini" address="mini" user="mobmanip" password="mobmanip" default="never" ros-package-path="/opt/ros/electric/stacks:/home/mobmanip/CogROS"/>-->
+
+  <node pkg="segwayrmp" type="segwayrmp" name="segway" output="screen" >
+  	<param name="odom_rot_cal" value="0.951804743" />
+	<param name="rec_log" value="false" />
+	<param name="max_xspeed" value="1.5"/>
+	<param name="max_yawspeed" value="1.2"/>
+  </node>
+    
+  <node pkg="sicktoolbox_wrapper_CogRos" type="sicklms" name="sick" output="screen">
+  <param name="port" value="/dev/sick" />
+	<param name="sicklms/baud" value="500000" />
+	<param name="inverted" value="false" />
+  </node>
+  
+  <!--<node machine="mini" pkg="BenderIO" type="BenderIO" name="EstopInterface"/>-->
+  <node pkg="BenderIO" type="BenderIO" name="EstopInterface" output="screen">
+  </node> 
+
+  <node name="ptu_46" pkg="ptu_46" type="ptu-46-70" respawn="false" output="screen">
+     	   <param name="nodding_mode" type="bool" value="false" />
+	   <param name="nodding_up_angle" type="double" value="30.0" />
+	   <param name="nodding_down_angle" type="double" value="-45.0" />
+	   <param name="ptu_device_path" type="string" value="/dev/ptu" />
+	   <param name="publish_pointcloud" type="bool" value="true" />
+  </node>
+  
+ <node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/>
+
+	<!-- <node pkg="tf" type="static_transform_publisher" name="segway_base_camera_broadcaster" args="0.0 0.0 1.525 1.57079633 0.0 0.0 /base_link /camera 9000" /> -->
+	<node pkg="tf" type="static_transform_publisher" name="segway_base_laser_broadcaster" args="0.26 0.0 0.14 0.0 0.0 0.0 /base_link /laser 50" />
+  <node pkg="tf" type="static_transform_publisher" name="tf_laser_kinect" args="0.25 0.0 0.85 1.57079633 0.0 1.57079633 /laser /kinect 50" />	
+	<!--<node pkg="tf" type="static_transform_publisher" name="segway_base_laser_broadcaster" args="0.26 0.0 0.14 0.0 0.0 0.0 /base_link /laser 50" />-->
+	<!--<node pkg="tf" type="static_transform_publisher" name="segway_base_ptu_broadcaster" args="0.33 0.0 1.30 0.0 0.0 0.0 /base_link /ptu_base 10000" /> -->
+  <!--<node pkg="tf" type="static_transform_publisher" name="segway_ptu_camera_broadcaster" args="0.0 0.06 0.055 0.0 1.57079633 0.0 /ptu_base /camera 10000" /> -->
+
+	 <node pkg="ps3joy" type="ps3_joy_node" name="ps3_joy" output="screen" />
+</launch>

@@ -1,0 +1,15 @@
+<launch>
+  
+  image_broadcaster
+  
+  <node pkg="image_broadcaster" type="image_broadcaster" name="image_broadcaster_node" output="screen">
+  </node>
+  
+  <node pkg="person_recognition" type="command_generator" name="command_generator_node" output="screen">
+  </node>
+  
+  <node pkg="person_recognition" type="PersonRecognizerImplementationRobocup" name="person_recognition_node" output="screen">
+    <param name="packageDir" value="$(find person_recognition)" />
+    <param name="cascadeFile" value="/home/mobmanip/ros/pkgs/vision_opencv/opencv2/build/opencv-svn/data/haarcascades/haarcascade_frontalface_default.xml" />
+  </node>
+</launch>

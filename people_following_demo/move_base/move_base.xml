@@ -1,0 +1,24 @@
+<launch>
+
+  <!-- Run the move base translator 
+  <node pkg="move_base_client" type="move_base_translator" name="move_base_translator">
+    <param name="action_name" value="move_base" />
+  </node>
+  -->
+  <node ns="local_costmap" name="voxel_grid_throttle" pkg="topic_tools" type="throttle" args="messages voxel_grid 3.0 voxel_grid_throttled" output="screen"/>
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base_node" output="screen">
+    <!--<param name="controller_frequency" value="10.0" />-->
+    <param name="clearing_rotation_allowed" value="false" />
+    <param name="planner_patience" value="15.0" />
+    <param name="recovery_behavior_enabled" value="false" />    
+    <remap from="tf_message" to="tf" />
+
+    <rosparam file="$(find people_following_demo)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find people_following_demo)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find people_following_demo)/move_base/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find people_following_demo)/move_base/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find people_following_demo)/move_base/navfn_params.yaml" command="load" />
+    <rosparam file="$(find people_following_demo)/move_base/base_local_planner_params.yaml" command="load" />
+  </node>
+</launch>

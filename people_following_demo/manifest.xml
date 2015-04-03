@@ -1,0 +1,23 @@
+<package>
+  <description brief="people_following_demo">
+
+     people_following_demo
+
+  </description>
+  <author></author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/people_following_demo</url>
+  <depend package="std_msgs"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+  <depend package="sensor_msgs"/>
+  <depend package="laser_geometry"/>
+  <depend package="opencv2"/>
+  <depend package="tf"/>
+  <!--<depend package="message_filters"/>
+  <depend package="move_base_msgs"/>
+  <depend package="actionlib"/>-->
+</package>
+
+

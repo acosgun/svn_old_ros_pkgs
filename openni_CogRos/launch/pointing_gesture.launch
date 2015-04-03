@@ -1,0 +1,25 @@
+<launch>
+  <master auto="start"/>
+  
+  <node name="soundplay_node" pkg="sound_play" type="soundplay_node.py"/>
+
+  <!--<node pkg="openni_camera" type="openni_node" name="openni_camera" output="screen" >
+    <param name="registration_type" value="1" />
+    <param name="image_input_format" value="6" />
+    <param name="device_type" value="0" />
+    <rosparam command="load" file="$(find openni_camera)/info/openni_params.yaml" />
+  </node>
+  <include file="$(find openni_camera)/launch/kinect_frames.launch"/>-->
+
+  <!--<node pkg="person_recognition" type="command_generator" name="command_generator" output="screen" >
+  </node>-->
+
+  
+
+  <!--<node name="tf_BASE_KINECT" pkg="tf" type="static_transform_publisher" args="0 0 0.085 0.0 0 0 /base_link /kinect 100" respawn="false" output="screen"/>-->
+
+<node pkg="openni_CogRos" type="pointing_gesture" name="pointing_gesture" output="screen" >
+  </node>
+
+</launch>
+

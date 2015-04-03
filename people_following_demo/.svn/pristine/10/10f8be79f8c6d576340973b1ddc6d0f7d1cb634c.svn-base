@@ -1,0 +1,7 @@
+<launch>
+
+<master auto="start"/>
+  <include  file="$(find people_following_demo)/move_base/move_base.xml"/>
+
+
+</launch>

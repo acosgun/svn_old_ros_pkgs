@@ -1,0 +1,31 @@
+<package>
+  <description brief="person_following">
+
+     person_following
+
+  </description>
+  <author>Akansel Cosgun</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/person_follower_class</url>
+
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="laser_geometry"/>
+  <depend package="move_base_msgs"/>
+  <depend package="visualization_msgs"/>
+  <depend package="actionlib"/>
+  <depend package="tf"/>
+  <!--<depend package="person_recognition"/> -->
+  <depend package="opencv2"/>
+  <depend package="geometry_msgs"/>
+  <depend package="ptu_46"/>
+  <depend package="sound_play"/>
+  <depend package="actionlib"/>
+  <depend package="actionlib_msgs"/>
+  <depend package="person_following_msgs"/>
+  <depend package="command_generator"/>
+</package>
+
+

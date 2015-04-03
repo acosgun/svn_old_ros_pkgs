@@ -1,0 +1,10 @@
+Header header
+string name
+float64 detectionConfidence
+sensor_msgs/RegionOfInterest faceRegion
+uint32 camImgWidth
+uint32 camImgHeight
+bool positionDefined
+geometry_msgs/Point32 currentPosition
+string frame_id
+

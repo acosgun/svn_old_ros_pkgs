@@ -1,0 +1,26 @@
+<package>
+  <description brief="openni_CogRos">
+
+     openni_CogRos
+
+  </description>
+  <author>Akansel Cosgun</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/openni_CogRos</url>
+  
+  <depend package="roscpp"/>
+  <depend package="roslib"/>
+  <depend package="cv_bridge"/>
+  <depend package="opencv2"/>
+  <depend package="std_msgs"/>
+  <depend package="geometry_msgs"/>
+  <depend package="sensor_msgs"/>
+  <depend package="openni_camera"/>
+  <depend package="tf"/>
+  <depend package="sound_play"/>
+  <depend package="person_following_msgs"/>
+  <depend package="omnimapper_msgs"/>
+</package>
+
+

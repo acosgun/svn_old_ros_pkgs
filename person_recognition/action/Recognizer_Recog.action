@@ -1,0 +1,8 @@
+#goal definition
+float32 watch_duration
+---
+#result
+person_recognition/PersonIdentifier[] people
+---
+#feedback
+bool foundSomeone

@@ -1,0 +1,9 @@
+<launch>
+
+<master auto="start"/>
+  <include  file="$(find autonomy_project_partybot)/move_base/move_base.xml"/>
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find autonomy_project_partybot)/my_map.pgm 0.05" respawn="false" />
+  <include file="$(find autonomy_project_partybot)/amcl_node.xml"/>  
+  <include file="$(find jeeves_config)/move_base/nav_view.xml"/>
+</launch>
